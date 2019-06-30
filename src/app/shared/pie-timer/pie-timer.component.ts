@@ -9,15 +9,16 @@ import { takeUntil, filter } from 'rxjs/operators';
 })
 export class PieTimerComponent implements OnInit, OnDestroy {
 
-  private subscription: Subscription;
-
   @ViewChild("border", {read: ElementRef}) border: ElementRef;
   @ViewChild("loader", {read: ElementRef}) loader: ElementRef;
 
   @Input() radius: number = 50;
   @Input() seconds: number = 10;
 
-  @Output() complete: EventEmitter<void> = new EventEmitter();
+  @Output() complete: EventEmitter<number> = new EventEmitter();
+
+  private subscription: Subscription;
+  private timeSpent: number;
 
   constructor(private renderer: Renderer2) { }
 
@@ -30,8 +31,9 @@ export class PieTimerComponent implements OnInit, OnDestroy {
     }
   }
 
-  stop() {
+  stop(): number {
     this.subscription.unsubscribe();
+    return this.timeSpent;
   }
 
   start() {
@@ -39,11 +41,14 @@ export class PieTimerComponent implements OnInit, OnDestroy {
     this.subscription = interval(this.milliseconds / 360)
       .pipe(
         takeUntil(timer$),
-        filter(l => l < 360)
+        filter(x => x < 360),
       )
       .subscribe({
-        next: l => this.draw(l),
-        complete: () => this.complete.emit(),
+        next: x => {
+          this.timeSpent = this.milliseconds * (x + 1) / 360;
+          this.draw(x);
+        },
+        complete: () => this.complete.emit(this.timeSpent),
       });
   }
 

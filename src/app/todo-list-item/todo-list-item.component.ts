@@ -22,15 +22,14 @@ export class TodoListItemComponent {
   constructor() {
   }
 
-  onToggle(started: boolean) {
-    this.started = started;
-    if(!started) {
-      this.toggleComplete.emit(this.todo);
-    }
+  onStart(started: boolean) {
+    this.started = true;
   }
 
-  onComplete() {
-   this.onToggle(false);
+  onStop(ms: number) {
+    this.started = false;
+    this.todo.title += ' (' + Math.round(ms) + ' ms)';
+    this.toggleComplete.emit(this.todo);
   }
 
   removeTodo(todo: Todo) {
