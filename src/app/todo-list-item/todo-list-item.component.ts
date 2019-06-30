@@ -14,15 +14,19 @@ export class TodoListItemComponent {
 
   @Output()
   remove: EventEmitter<Todo> = new EventEmitter();
-
   @Output()
   toggleComplete: EventEmitter<Todo> = new EventEmitter();
+
+  started: boolean;
 
   constructor() {
   }
 
-  onToggleTodoComplete(todo: Todo) {
-    this.toggleComplete.emit(todo);
+  onToggle(started: boolean) {
+    this.started = started;
+    if(!started) {
+      this.toggleComplete.emit(this.todo);
+    }
   }
 
   removeTodo(todo: Todo) {

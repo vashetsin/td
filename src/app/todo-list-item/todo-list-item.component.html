@@ -1,9 +1,9 @@
 <div class="view">
-  <app-timer-button 
+  <app-timer-button *ngIf="!todo.complete"
     [radius]="25" 
     [seconds]="60" 
-    [started]="!todo.complete" 
-    (toggle)="onToggleTodoComplete(todo)"></app-timer-button>
+    [started]="started" 
+    (toggle)="onToggle($event)"></app-timer-button>
   <label>{{todo.title}}</label>
   <button class="destroy" (click)="removeTodo(todo)"></button>
 </div>

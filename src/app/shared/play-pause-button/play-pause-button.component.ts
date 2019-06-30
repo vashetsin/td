@@ -17,7 +17,7 @@ export class PlayPauseButtonComponent implements OnInit {
   }
 
   onToggle() {
-    this.toggle.emit(this.started);
+    this.toggle.emit(!this.started);
   }
 
 }
