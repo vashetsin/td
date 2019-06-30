@@ -1,0 +1,9 @@
+:host {
+    position: relative;
+
+    ::ng-deep {
+        app-pie-timer {
+            position: absolute;
+        }
+    }
+}
