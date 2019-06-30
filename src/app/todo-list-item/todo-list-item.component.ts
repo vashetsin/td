@@ -1,5 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+
 import { Todo } from '../todo';
+import { PieTimerComponent } from '../shared/pie-timer/pie-timer.component';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -8,6 +10,8 @@ import { Todo } from '../todo';
 })
 export class TodoListItemComponent {
 
+  @ViewChild('pieTimer') pieTimer: PieTimerComponent;
+  
   @Input() todo: Todo;
 
   @Output()
@@ -20,6 +24,7 @@ export class TodoListItemComponent {
   }
 
   toggleTodoComplete(todo: Todo) {
+    this.pieTimer.start();
     this.toggleComplete.emit(todo);
   }
 

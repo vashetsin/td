@@ -12,6 +12,7 @@ import { TodoListItemComponent } from './todo-list-item/todo-list-item.component
 import { ApiService } from './api.service';
 import { PlayPauseButtonComponent } from './shared/play-pause-button/play-pause-button.component';
 import { PieTimerComponent } from './shared/pie-timer/pie-timer.component';
+import { TimerButtonComponent } from './shared/timer-button/timer-button.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PieTimerComponent } from './shared/pie-timer/pie-timer.component';
     TodoListHeaderComponent,
     TodoListItemComponent,
     PlayPauseButtonComponent,
-    PieTimerComponent
+    PieTimerComponent,
+    TimerButtonComponent
   ],
   imports: [
     BrowserModule,

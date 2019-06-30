@@ -9,8 +9,7 @@ export class PlayPauseButtonComponent implements OnInit {
 
   @Input() checked: boolean;
 
-  @Output()
-  toogle: EventEmitter<boolean> = new EventEmitter();
+  @Output() toogle: EventEmitter<boolean> = new EventEmitter();
 
   constructor() { }
 
