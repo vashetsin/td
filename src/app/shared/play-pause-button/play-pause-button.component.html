@@ -1,4 +1,4 @@
 <div class="playpause">
-  <input type="checkbox" id="playpause" (click)="onToggle()" [checked]="!started" />
-  <label for="playpause" tabindex=1></label>
+  <input type="checkbox" [attr.id]="id" (click)="onToggle()" [checked]="!started" />
+  <label [attr.for]="id" tabindex=1></label>
 </div>
