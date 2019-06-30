@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { interval, timer, Subscription } from 'rxjs';
 import { takeUntil, filter } from 'rxjs/operators';
 
@@ -16,6 +16,8 @@ export class PieTimerComponent implements OnInit, OnDestroy {
 
   @Input() radius: number = 50;
   @Input() seconds: number = 10;
+
+  @Output() complete: EventEmitter<void> = new EventEmitter();
 
   constructor(private renderer: Renderer2) { }
 
@@ -39,7 +41,10 @@ export class PieTimerComponent implements OnInit, OnDestroy {
         takeUntil(timer$),
         filter(l => l < 360)
       )
-      .subscribe(val => this.draw(val));
+      .subscribe({
+        next: l => this.draw(l),
+        complete: () => this.complete.emit(),
+      });
   }
 
   get diameter(): number

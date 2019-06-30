@@ -15,8 +15,8 @@ export class TimerButtonComponent implements OnInit {
   @Input() seconds: number;
   @Input() started: boolean;
 
-  @Output()
-  toggle: EventEmitter<boolean> = new EventEmitter();
+  @Output() toggle: EventEmitter<boolean> = new EventEmitter();
+  @Output() complete: EventEmitter<void> = new EventEmitter();
 
   constructor() { }
 
@@ -31,6 +31,10 @@ export class TimerButtonComponent implements OnInit {
       this.pieTimer.stop();
     }
     this.toggle.emit(started);
+  }
+
+  onComplete() {
+    this.complete.emit();
   }
 
 }
