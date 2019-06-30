@@ -24,6 +24,12 @@ export class TimerButtonComponent implements OnInit {
   }
 
   onToggle(started: boolean) {
+    if(started) {
+      this.pieTimer.start();
+    }
+    else {
+      this.pieTimer.stop();
+    }
     this.toggle.emit(started);
   }
 

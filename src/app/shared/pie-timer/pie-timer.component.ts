@@ -28,6 +28,10 @@ export class PieTimerComponent implements OnInit, OnDestroy {
     }
   }
 
+  stop() {
+    this.subscription.unsubscribe();
+  }
+
   start() {
     const timer$ = timer(this.milliseconds);
     this.subscription = interval(this.milliseconds / 360)
