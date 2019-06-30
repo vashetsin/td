@@ -7,17 +7,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PlayPauseButtonComponent implements OnInit {
 
-  @Input() checked: boolean;
+  @Input() started: boolean;
 
-  @Output() toogle: EventEmitter<boolean> = new EventEmitter();
+  @Output() toggle: EventEmitter<boolean> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  toggle() {
-    this.toogle.emit(!this.checked);
+  onToggle() {
+    this.toggle.emit(!this.started);
   }
 
 }

@@ -47,11 +47,11 @@ export class PieTimerComponent implements OnInit, OnDestroy {
     return this.seconds * 1000;
   }
 
-  get transfromBorder(): string {
+  get transformBorder(): string {
     return 'translate(' + this.radius + ', ' + this.radius + ')';
   }
 
-  get transfromLoader(): string {
+  get transformLoader(): string {
     return 'translate(' + this.radius + ', ' + this.radius + ') scale(.84)';
   }
 

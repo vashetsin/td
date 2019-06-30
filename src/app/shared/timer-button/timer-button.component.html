@@ -1,3 +1,2 @@
-<p>
-  timer-button works!
-</p>
+<app-pie-timer #pieTimer [radius]="radius" [seconds]="seconds"></app-pie-timer>
+<app-play-pause-button (toggle)="onToggle($event)" [started]="started"></app-play-pause-button>

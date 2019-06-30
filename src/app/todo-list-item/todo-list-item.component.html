@@ -1,6 +1,9 @@
 <div class="view">
-  <app-pie-timer #pieTimer [radius]="25" [seconds]="60"></app-pie-timer>
-  <app-play-pause-button (toogle)="toggleTodoComplete(todo)" [checked]="!todo.complete"></app-play-pause-button>
+  <app-timer-button 
+    [radius]="25" 
+    [seconds]="60" 
+    [started]="!todo.complete" 
+    (toggle)="onToggleTodoComplete(todo)"></app-timer-button>
   <label>{{todo.title}}</label>
   <button class="destroy" (click)="removeTodo(todo)"></button>
 </div>

@@ -9,8 +9,6 @@ import { PieTimerComponent } from '../shared/pie-timer/pie-timer.component';
   styleUrls: ['./todo-list-item.component.scss']
 })
 export class TodoListItemComponent {
-
-  @ViewChild('pieTimer') pieTimer: PieTimerComponent;
   
   @Input() todo: Todo;
 
@@ -23,8 +21,7 @@ export class TodoListItemComponent {
   constructor() {
   }
 
-  toggleTodoComplete(todo: Todo) {
-    this.pieTimer.start();
+  onToggleTodoComplete(todo: Todo) {
     this.toggleComplete.emit(todo);
   }
 
